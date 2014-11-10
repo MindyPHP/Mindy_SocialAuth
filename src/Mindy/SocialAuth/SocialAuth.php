@@ -68,7 +68,7 @@ class SocialAuth
 
     /**
      * @param $name
-     * @return \Mindy\OAuth1\Provider\ProviderInterface|\Mindy\OAuth2\Provider\ProviderInterface|null
+     * @return \Mindy\SocialAuth\Provider\OAuth1Provider|\Mindy\SocialAuth\Provider\OAuth2Provider
      */
     public function getProvider($name)
     {
@@ -76,7 +76,7 @@ class SocialAuth
     }
 
     /**
-     * @return \SocialAuther\Adapter\BaseAdapter[]
+     * @return \Mindy\SocialAuth\Provider\OAuth1Provider[]|\Mindy\SocialAuth\Provider\OAuth2Provider[]
      */
     public function getProviders()
     {
@@ -89,6 +89,6 @@ class SocialAuth
             throw new Exception("Unknown provider");
         }
 
-        return $this->getProvider($name)->authenticate();
+        return $this->getProvider($name)->process();
     }
 }
