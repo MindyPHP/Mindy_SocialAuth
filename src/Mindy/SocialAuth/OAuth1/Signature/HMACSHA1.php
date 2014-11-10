@@ -1,11 +1,11 @@
 <?php
 
-namespace Mindy\OAuth1\Signature;
+namespace Mindy\SocialAuth\OAuth1\Signature;
 
-use Mindy\OAuth1\Consumer;
-use Mindy\OAuth1\Request;
-use Mindy\OAuth1\Signature;
-use Mindy\OAuth1\Token;
+use Mindy\SocialAuth\OAuth1\Consumer;
+use Mindy\SocialAuth\OAuth1\Request;
+use Mindy\SocialAuth\OAuth1\Signature;
+use Mindy\SocialAuth\OAuth1\Token;
 
 /**
  * The HMAC-SHA1 signature provides secure signing using the HMAC-SHA1
@@ -37,10 +37,8 @@ class HMACSHA1 extends Signature
     {
         // Get the signing key
         $key = $this->key($consumer, $token);
-
         // Get the base string for the signature
         $base_string = $request->baseString();
-
         // Sign the base string using the key
         return base64_encode(hash_hmac('sha1', $base_string, $key, true));
     }

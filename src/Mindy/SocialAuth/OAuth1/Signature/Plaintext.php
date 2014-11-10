@@ -12,12 +12,12 @@
  * @since      3.0.7
  */
 
-namespace Mindy\OAuth1\Signature;
+namespace Mindy\SocialAuth\OAuth1\Signature;
 
-use Mindy\OAuth1\Consumer;
-use Mindy\OAuth1\Request;
-use Mindy\OAuth1\Signature;
-use Mindy\OAuth1\Token;
+use Mindy\SocialAuth\OAuth1\Consumer;
+use Mindy\SocialAuth\OAuth1\Request;
+use Mindy\SocialAuth\OAuth1\Signature;
+use Mindy\SocialAuth\OAuth1\Token;
 
 class Plaintext extends Signature
 {

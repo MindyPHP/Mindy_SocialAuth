@@ -21,7 +21,7 @@ abstract class Token
     /**
      * @var  string  uid
      */
-    protected $uid;
+    public $uid;
 
     /**
      * Sets the token and secret values.

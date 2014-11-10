@@ -3,9 +3,9 @@
 namespace Mindy\SocialAuth\Provider;
 
 use Exception;
-use Mindy\OAuth1\Request\Resource;
-use Mindy\OAuth1\Token;
-use Mindy\OAuth1\Token\Access;
+use Mindy\SocialAuth\OAuth1\Request\Resource;
+use Mindy\SocialAuth\OAuth1\Token;
+use Mindy\SocialAuth\OAuth1\Token\Access;
 
 class Twitter extends OAuth1Provider implements OAuth1ProviderInterface
 {

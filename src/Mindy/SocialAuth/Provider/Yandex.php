@@ -2,11 +2,9 @@
 
 namespace Mindy\SocialAuth\Provider;
 
-use Mindy\OAuth2\Exception;
-use Mindy\OAuth2\Token\Access;
-use Mindy\OAuth2\Token\Refresh;
-
-// TODO
+use Mindy\SocialAuth\OAuth2\Exception;
+use Mindy\SocialAuth\OAuth2\Token\Access;
+use Mindy\SocialAuth\OAuth2\Token\Refresh;
 
 /**
  * Yandex OAuth2 Provider
@@ -16,8 +14,6 @@ use Mindy\OAuth2\Token\Refresh;
  */
 class Yandex extends OAuth2Provider implements OAuth2ProviderInterface
 {
-    public $method = 'POST';
-
     public $socialFieldsMap = [
         'socialId' => 'id',
         'email' => 'default_email',
@@ -25,6 +21,8 @@ class Yandex extends OAuth2Provider implements OAuth2ProviderInterface
         'socialPage' => 'link',
         'avatar' => 'picture'
     ];
+
+    public $method = 'POST';
 
     public function authorizeUrl()
     {
