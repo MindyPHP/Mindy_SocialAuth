@@ -142,7 +142,7 @@ abstract class OAuth1Provider extends BaseProvider
                 throw new Exception('OAuth verifier was not found in request');
             }
             $token->verifier($_REQUEST['oauth_verifier']);
-            $this->token = $this->accessToken($token);
+            $this->setToken($this->accessToken($token));
             return true;
         } else {
             throw new Exception('Token mismatch');

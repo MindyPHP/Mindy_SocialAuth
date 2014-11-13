@@ -86,11 +86,16 @@ abstract class BaseProvider
      */
     abstract public function process();
 
+    public function getUserTokens()
+    {
+        return isset($this->token) ? $this->token : false;
+    }
+
     /**
      * Make post request and return result
      *
      * @param string $url
-     * @param string $params
+     * @param array|string $params
      * @param bool $parse
      * @return array|string
      */
@@ -141,6 +146,7 @@ abstract class BaseProvider
     }
 
     /**
+     * @throws \Exception
      * @return array
      */
     public function getUserInfo()

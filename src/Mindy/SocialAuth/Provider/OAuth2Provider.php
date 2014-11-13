@@ -80,11 +80,6 @@ abstract class OAuth2Provider extends BaseProvider
         }
     }
 
-    public function getUserTokens()
-    {
-        return isset($this->token) ? $this->token : false;
-    }
-
     public function authorize($options = array())
     {
         $state = md5(uniqid(rand(), true));

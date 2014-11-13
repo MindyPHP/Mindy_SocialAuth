@@ -11,17 +11,15 @@ class Request extends Token
      */
     protected $name = 'request';
     /**
-     * @var  string  request token verifier
+     * @var string request token verifier
      */
     public $verifier;
 
     /**
      * Change the token verifier.
-     *
-     *     $token->verifier($key);
-     *
-     * @param   string   new verifier
-     * @return  $this
+     * $token->verifier($key);
+     * @param string new verifier
+     * @return $this
      */
     public function verifier($verifier)
     {

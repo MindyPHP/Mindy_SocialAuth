@@ -46,10 +46,6 @@ class Consumer
             throw new Exception('Required option not provided: clientId');
         }
 
-        if (empty($options['redirectUri'])) {
-            throw new Exception('Required option not provided: redirectUri');
-        }
-
         $this->client_id = $options['clientId'];
 
         if (isset($options['redirectUri'])) {
