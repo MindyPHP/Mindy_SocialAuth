@@ -99,7 +99,7 @@ abstract class BaseProvider
      * @param bool $parse
      * @return array|string
      */
-    protected function post($url, $params = [], $parse = true)
+    public function post($url, $params = [], $parse = true)
     {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -126,7 +126,7 @@ abstract class BaseProvider
      * @param bool $parse
      * @return mixed
      */
-    protected function get($url, $params = [], $parse = true)
+    public function get($url, $params = [], $parse = true)
     {
         $curl = curl_init();
         if (!empty($params)) {
