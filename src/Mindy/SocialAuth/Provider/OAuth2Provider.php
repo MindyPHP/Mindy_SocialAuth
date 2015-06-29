@@ -54,7 +54,7 @@ abstract class OAuth2Provider extends BaseProvider
             $this->scope = $options['scope'];
         }
 
-        $this->redirect_uri = $options['redirectUri'];
+        $this->setRedirectUri($options['redirectUri']);
     }
 
     /**
@@ -83,9 +83,10 @@ abstract class OAuth2Provider extends BaseProvider
     public function authorize($options = array())
     {
         $state = md5(uniqid(rand(), true));
+        $redirectUri = isset($options['redirect_uri']) ? $options['redirect_uri'] : $this->redirectUri;
         $params = array(
             'client_id' => $this->client_id,
-            'redirect_uri' => isset($options['redirect_uri']) ? $options['redirect_uri'] : $this->redirect_uri,
+            'redirect_uri' => $redirectUri,
             'state' => $state,
             'scope' => is_array($this->scope) ? implode($this->scope_seperator, $this->scope) : $this->scope,
             'response_type' => 'code'
@@ -113,7 +114,7 @@ abstract class OAuth2Provider extends BaseProvider
         switch ($params['grant_type']) {
             case 'authorization_code':
                 $params['code'] = $code;
-                $params['redirect_uri'] = isset($options['redirect_uri']) ? $options['redirect_uri'] : $this->redirect_uri;
+                $params['redirect_uri'] = isset($options['redirect_uri']) ? $options['redirect_uri'] : $this->redirectUri;
                 break;
 
             case 'refresh_token':

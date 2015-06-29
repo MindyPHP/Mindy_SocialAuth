@@ -56,6 +56,10 @@ abstract class BaseProvider
      * @var  array additional request parameters to be used for remote requests
      */
     protected $params = array();
+    /**
+     * @var string redirect uri
+     */
+    protected $redirectUri;
 
     public function __construct(array $options = array())
     {
@@ -89,6 +93,12 @@ abstract class BaseProvider
     public function getUserTokens()
     {
         return isset($this->token) ? $this->token : false;
+    }
+
+    public function setUserTokens($token)
+    {
+        $this->token = $token;
+        return $this;
     }
 
     /**
@@ -241,5 +251,10 @@ abstract class BaseProvider
     {
         header("Location: " . $url);
         die();
+    }
+
+    public function setRedirectUri($redirectUri)
+    {
+        $this->redirectUri = $redirectUri;
     }
 }

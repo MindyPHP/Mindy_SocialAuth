@@ -13,6 +13,12 @@ namespace Mindy\SocialAuth\Provider;
  */
 class Instagram extends OAuth2Provider implements OAuth2ProviderInterface
 {
+    public $socialFieldsMap = [
+        'socialId' => 'id',
+        'avatar' => 'profile_picture',
+        'name' => 'full_name',
+    ];
+
     /**
      * @var  string  scope separator, most use "," but some like Google are spaces
      */
