@@ -35,6 +35,7 @@ class Odnoklassniki extends OAuth2Provider implements OAuth2ProviderInterface
     public function __construct(array $options = array())
     {
         parent::__construct($options);
+
         if (empty($options['clientPublic'])) {
             throw new Exception('Required option not provided: clientPublic');
         }
@@ -65,26 +66,25 @@ class Odnoklassniki extends OAuth2Provider implements OAuth2ProviderInterface
         return 'http://api.odnoklassniki.ru/oauth/token.do';
     }
 
-    public function authorize($options = array())
+    public function authorize($options = [])
     {
-        return array(
+        return [
             'client_id' => $this->client_id,
-            'redirect_uri' => isset($options['redirect_uri']) ? $options['redirect_uri'] : $this->redirect_uri,
+            'redirect_uri' => isset($options['redirect_uri']) ? $options['redirect_uri'] : $this->redirectUri,
             'response_type' => 'code'
-        );
+        ];
     }
 
     public function fetchUserInfo()
     {
         $sign = md5("application_key={$this->client_public}format=jsonmethod=users.getCurrentUser" . md5($this->token->access_token . $this->client_secret));
-        $params = [
+        $user = $this->get('http://api.odnoklassniki.ru/fb.do', [
             'method' => 'users.getCurrentUser',
             'access_token' => $this->token->access_token,
             'application_key' => $this->client_public,
             'format' => 'json',
             'sig' => $sign
-        ];
-        $user = $this->get('http://api.odnoklassniki.ru/fb.do', $params);
+        ]);
         return $user;
     }
 }

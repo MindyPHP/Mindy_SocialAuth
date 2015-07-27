@@ -15,7 +15,7 @@ class Vkontakte extends OAuth2Provider implements OAuth2ProviderInterface
         'socialId' => 'uid',
         'email' => 'email',
         'avatar' => 'photo_big',
-        'birthday' => 'bdate'
+        'birthday' => 'bdate',
     ];
 
     /**
@@ -43,6 +43,7 @@ class Vkontakte extends OAuth2Provider implements OAuth2ProviderInterface
             'uids' => $this->token->uid,
             'fields' => 'uid,first_name,last_name,screen_name,sex,bdate,photo_big',
             'access_token' => $this->token->access_token,
+            'scope' => $this->scope
         ));
 
         $user = current($response);

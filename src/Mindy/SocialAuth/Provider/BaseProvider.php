@@ -184,6 +184,24 @@ abstract class BaseProvider
     }
 
     /**
+     * @return array
+     * @throws Exception
+     */
+    public function getUserAttributes()
+    {
+        return [
+            'username' => $this->getName(),
+            'socialId' => $this->getSocialId(),
+            'socialPage' => $this->getSocialPage(),
+            'email' => $this->getEmail(),
+            'avatar' => $this->getAvatar(),
+            'sex' => $this->getSex(),
+            'birthday' => $this->getBirthday(),
+            'extra' => $this->getUserInfo()
+        ];
+    }
+
+    /**
      * Get user social id or null if it is not set
      * @return string|null
      */

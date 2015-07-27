@@ -22,7 +22,7 @@ class Facebook extends OAuth2Provider implements OAuth2ProviderInterface
         'birthday' => 'birthday'
     ];
 
-    protected $scope = array('offline_access', 'email', 'read_stream');
+    public $scope = array('offline_access', 'email', 'read_stream');
 
     public function authorizeUrl()
     {
@@ -36,11 +36,9 @@ class Facebook extends OAuth2Provider implements OAuth2ProviderInterface
 
     public function fetchUserInfo()
     {
-        $user = $this->get('https://graph.facebook.com/me', array(
+        return $this->get('https://graph.facebook.com/me', [
             'access_token' => $this->token->access_token,
-        ));
-
-        return $user;
+        ]);
     }
 
     /**
