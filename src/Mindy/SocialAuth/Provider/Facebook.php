@@ -38,6 +38,7 @@ class Facebook extends OAuth2Provider implements OAuth2ProviderInterface
     {
         return $this->get('https://graph.facebook.com/me', [
             'access_token' => $this->token->access_token,
+            'appsecret_proof' => hash_hmac('sha256', $this->token->access_token, $this->client_secret)
         ]);
     }
 
