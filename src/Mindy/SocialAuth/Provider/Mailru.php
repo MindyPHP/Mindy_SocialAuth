@@ -61,7 +61,7 @@ class Mailru extends OAuth2Provider implements OAuth2ProviderInterface
     {
         return array(
             'client_id' => $this->client_id,
-            'redirect_uri' => isset($options['redirect_uri']) ? $options['redirect_uri'] : $this->redirect_uri,
+            'redirect_uri' => isset($options['redirectUri']) ? $options['redirectUri'] : $this->redirectUri,
             'response_type' => 'code',
         );
     }
