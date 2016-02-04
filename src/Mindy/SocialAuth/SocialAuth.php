@@ -15,6 +15,7 @@ namespace Mindy\SocialAuth;
 
 use Closure;
 use Exception;
+use Mindy\Helper\Console;
 use ReflectionClass;
 
 class SocialAuth
@@ -54,6 +55,10 @@ class SocialAuth
 
     protected function absoluteUrl($url)
     {
+        if (Console::isCli()) {
+            return $url;
+        }
+
         if (strpos($url, 'http') === 0) {
             return $url;
         } else {
