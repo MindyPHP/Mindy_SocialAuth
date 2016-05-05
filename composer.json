@@ -1,7 +1,6 @@
 {
     "name": "mindy/social_auth",
     "homepage": "https://github.com/studio107/Mindy_SocialAuth",
-    "version": "0.3",
     "license": "MIT",
     "autoload": {
         "psr-4": {
