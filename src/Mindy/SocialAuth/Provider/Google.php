@@ -75,7 +75,7 @@ class Google extends OAuth2Provider implements OAuth2ProviderInterface
 
         $params = array(
             'client_id' => $this->client_id,
-            'redirect_uri' => isset($options['redirect_uri']) ? $options['redirect_uri'] : $this->redirect_uri,
+            'redirect_uri' => isset($options['redirect_uri']) ? $options['redirect_uri'] : $this->redirectUri,
             'state' => $state,
             'scope' => is_array($this->scope) ? implode($this->scope_seperator, $this->scope) : $this->scope,
             'response_type' => 'code',
