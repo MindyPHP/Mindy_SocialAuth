@@ -2,7 +2,7 @@
 
 namespace Mindy\SocialAuth\Provider;
 
-use Mindy\OAuth2\Exception;
+use Mindy\SocialAuth\OAuth2\Exception;
 
 /**
  * Google OAuth2 Provider
