@@ -15,7 +15,9 @@ namespace Mindy\SocialAuth;
 
 use Closure;
 use Exception;
+use Mindy\Base\Mindy;
 use Mindy\Helper\Console;
+use Mindy\Helper\Creator;
 use ReflectionClass;
 
 class SocialAuth
@@ -31,9 +33,7 @@ class SocialAuth
 
     public function __construct(array $config = [])
     {
-        foreach ($config as $key => $value) {
-            $this->$key = $value;
-        }
+        Creator::configure($this, $config);
 
         foreach ($this->providers as $name => $params) {
             if (isset($params['redirectUri'])) {
@@ -43,7 +43,8 @@ class SocialAuth
                 }
                 $params['redirectUri'] = $this->absoluteUrl($redirectUri);
             } else {
-                throw new Exception("Missing redirectUri for " . $name);
+                $redirectUri = Mindy::app()->urlManager->reverse('social:auth', ['provider' => $name]);
+                $params['redirectUri'] = $this->absoluteUrl($redirectUri);
             }
             if (!isset($params['class'])) {
                 throw new Exception("Missing class name in " . $name . "provider");
@@ -90,10 +91,11 @@ class SocialAuth
 
     public function authenticate($name)
     {
-        if ($name === null) {
+        $provider = $this->getProvider($name);
+        if ($provider === null) {
             throw new Exception("Unknown provider");
         }
 
-        return $this->getProvider($name)->process();
+        return $provider->process();
     }
 }
